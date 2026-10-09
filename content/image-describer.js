@@ -17,6 +17,37 @@
     if (!apiKey) return null;
 
     try {
+      if (provider === 'groq') {
+        // Groq vision. GPT-OSS models are text-only, so images go to Groq's multimodal model.
+        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey.trim()}`
+          },
+          body: JSON.stringify({
+            model: 'qwen/qwen3.8-27b',
+            messages: [
+              {
+                role: 'user',
+                content: [
+                  { type: 'text', text: prompt },
+                  { type: 'image_url', image_url: { url: imageDataUrl } }
+                ]
+              }
+            ],
+            max_completion_tokens: 400,
+            temperature: 0.3,
+            stream: false
+          })
+        });
+        if (response.ok) {
+          const data = await response.json();
+          return data?.choices?.[0]?.message?.content?.trim() || null;
+        }
+        return null;
+      }
+
       if (provider === 'grok') {
         // Grok 2 Vision multimodal input
         const grokVisionModels = ['grok-2-vision-1212', 'grok-vision-beta', 'grok-2-vision'];
@@ -194,16 +225,16 @@
   class ImageDescriberEngine {
     constructor() {
       this.apiKey = '';
-      this.provider = 'gemini';
-      this.model = 'gemini-2.0-flash';
+      this.provider = 'groq';
+      this.model = 'qwen/qwen3.8-27b';
       this.described = new WeakSet(); // track already-processed images
       this.processing = false;
     }
 
-    updateSettings({ geminiApiKey, grokApiKey, aiProvider, geminiModel } = {}) {
+    updateSettings({ geminiApiKey, grokApiKey, groqApiKey, aiProvider, geminiModel } = {}) {
       if (aiProvider !== undefined) this.provider = aiProvider;
-      if (aiProvider === 'grok' && grokApiKey !== undefined) this.apiKey = grokApiKey;
-      else if (geminiApiKey !== undefined) this.apiKey = geminiApiKey;
+      const keys = { groq: groqApiKey, grok: grokApiKey, gemini: geminiApiKey };
+      if (keys[this.provider] !== undefined) this.apiKey = keys[this.provider];
       if (geminiModel !== undefined) this.model = geminiModel;
     }
 

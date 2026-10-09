@@ -78,6 +78,6 @@
   ],
 
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'self' https://generativelanguage.googleapis.com https://api.x.ai;"
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'self' https://api.groq.com https://generativelanguage.googleapis.com https://api.x.ai;"
   }
 }

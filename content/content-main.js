@@ -322,8 +322,9 @@
     const aiSettings = {
       geminiApiKey: settings.geminiApiKey || '',
       grokApiKey:   settings.grokApiKey   || '',
-      aiProvider:   settings.aiProvider   || 'gemini',
-      geminiModel:  settings.aiModel      || 'gemini-2.0-flash',
+      groqApiKey:   settings.groqApiKey   || '',
+      aiProvider:   settings.aiProvider   || 'groq',
+      geminiModel:  settings.aiModel      || 'openai/gpt-oss-20b',
       simplifyLevel: settings.simplificationLevel || 'medium',
       bionicReading: settings.bionicReadingEnabled || false
     };
@@ -778,7 +779,7 @@
 
     chrome.runtime.sendMessage({ type: 'GET_AI_KEY' }, async (resp) => {
       const key = resp && resp.key;
-      const provider = (resp && resp.provider) || 'gemini';
+      const provider = (resp && resp.provider) || 'groq';
       if (!key) {
         showToast('Please add your API key in the OmniAccess AI & Tools tab.', 'warning');
         return;
@@ -811,6 +812,35 @@
     };
     const instruction = levelMap[level] || levelMap.medium;
     const prompt = `${instruction}\n\nSimplify the following text:\n\n${text}`;
+
+    if (provider === 'groq') {
+      // Groq (OpenAI-compatible) running OpenAI's GPT-OSS model
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+          model: 'openai/gpt-oss-20b',
+          messages: [
+            { role: 'system', content: 'You are an accessibility plain-language simplifier. Output ONLY the simplified text, no preamble.' },
+            { role: 'user', content: prompt }
+          ],
+          max_completion_tokens: 1500,
+          temperature: 0.2,
+          reasoning_effort: 'low',
+          include_reasoning: false,
+          stream: false
+        })
+      });
+      if (!res.ok) {
+        const e = await res.json().catch(() => ({}));
+        throw new Error(e.error?.message || `Groq API error: ${res.status}`);
+      }
+      const data = await res.json();
+      return data?.choices?.[0]?.message?.content || '';
+    }
 
     if (provider === 'grok') {
       const res = await fetch('https://api.x.ai/v1/chat/completions', {
@@ -1495,7 +1525,7 @@
         }
         chrome.runtime.sendMessage({ type: 'GET_AI_KEY' }, async (resp) => {
           const key = resp && resp.key;
-          if (!key) { speakFeedback('Please add your Gemini API key first.'); return; }
+          if (!key) { speakFeedback('Please add your AI API key first.'); return; }
 
           const descs = await Promise.all(images.map(async (img) => {
             try {
@@ -1808,8 +1838,9 @@
             window.OmniTextSimplifier.updateSettings({
               simplifyLevel: message.level,
               aiProvider: message.provider,
-              geminiApiKey: message.provider !== 'grok' ? message.apiKey : undefined,
-              grokApiKey: message.provider === 'grok' ? message.apiKey : undefined
+              geminiApiKey: message.provider === 'gemini' ? message.apiKey : undefined,
+              grokApiKey: message.provider === 'grok' ? message.apiKey : undefined,
+              groqApiKey: message.provider === 'groq' ? message.apiKey : undefined
             });
             const result = await window.OmniTextSimplifier.simplifyPage({
               apiKey: message.apiKey,
@@ -1835,8 +1866,9 @@
           if (window.OmniImageDescriber) {
             window.OmniImageDescriber.updateSettings({
               aiProvider: message.provider,
-              geminiApiKey: message.provider !== 'grok' ? message.apiKey : undefined,
-              grokApiKey: message.provider === 'grok' ? message.apiKey : undefined
+              geminiApiKey: message.provider === 'gemini' ? message.apiKey : undefined,
+              grokApiKey: message.provider === 'grok' ? message.apiKey : undefined,
+              groqApiKey: message.provider === 'groq' ? message.apiKey : undefined
             });
             const result = await window.OmniImageDescriber.describeAllImages({
               apiKey: message.apiKey,
