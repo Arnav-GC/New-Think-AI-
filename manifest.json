@@ -71,7 +71,8 @@
         "shared/*",
         "sidepanel/*",
         "website.html",
-        "website-demo.js"
+        "website-demo.js",
+        "website-a11y.js"
       ],
       "matches": ["<all_urls>"]
     }

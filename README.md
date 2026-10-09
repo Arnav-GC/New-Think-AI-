@@ -14,7 +14,7 @@
 
 ### 🖼️ AI Image & Page Descriptions
 - Describes charts, graphs, UI layouts, and memes aloud
-- Powered by **Gemini Vision API** with offline heuristic fallback
+- Powered by a **vision model on Groq** (Gemini and xAI Grok also supported) with offline heuristic fallback
 - Auto-detects image type (chart/UI/meme/general) for contextual descriptions
 - Click-to-describe mode for individual images
 - Injects missing `alt` text and `aria-label` automatically
@@ -25,7 +25,7 @@
 - **Bionic Reading** mode (bold word-fixation points)
 - **Read Aloud** with word-by-word highlighting, speed/pitch/voice control
 - Flesch-Kincaid readability scoring
-- Powered by Gemini LLM or 100% offline heuristic engine
+- Powered by OpenAI's GPT-OSS model on Groq (or Gemini / Grok) or a 100% offline heuristic engine
 
 ### ♿ WCAG 2.2 Auditor
 - Checks: missing alt text, contrast < 4.5:1, missing form labels, heading hierarchy, vague links, unlabeled buttons, small touch targets (< 24px)
@@ -60,7 +60,7 @@
 
 ### 🔒 Privacy-First
 - **100% on-device processing** for gaze tracking, switch access, heuristic simplification
-- Gemini API calls only happen when you configure an API key
+- AI provider API calls only happen when you configure an API key
 - Webcam video is processed locally in Canvas memory — never uploaded
 - Chrome Built-in AI (Prompt API) used when available for zero-network LLM
 - Offline mode for all core features
@@ -92,7 +92,7 @@ OmniAccess AI/
 │   └── sidepanel.js                 # Side panel controller
 ├── shared/
 │   ├── config.js                    # Default profiles & voice command dict
-│   ├── gemini-api.js                # Gemini VLM & LLM API integration
+│   ├── gemini-api.js                # Groq / Gemini / Grok LLM & vision API integration
 │   ├── heuristic-simplifier.js      # Offline-first text simplification
 │   ├── audio-chimes.js              # Web Audio API sonification
 │   └── storage-manager.js           # chrome.storage sync/local manager
@@ -124,12 +124,14 @@ You can install the extension and test all features interactively via the offici
 
 ## ⚙️ Configuration
 
-### Gemini API Key (for AI features)
-1. Get a free API key at [ai.google.dev](https://ai.google.dev)
+### AI API Key (for AI features)
+1. Get a free **Groq** API key at [console.groq.com](https://console.groq.com) (starts with `gsk_`)
 2. Open OmniAccess AI side panel → **AI & Tools** tab
-3. Paste your key and click **Save Key**
+3. Choose **Groq (GPT-OSS)** as the provider, paste your key and click **Save Key**
 4. Click **Test Key** to verify
-5. Now image descriptions, text simplification, and chart reading use Gemini AI
+5. Now text simplification uses `openai/gpt-oss-20b`, and image descriptions use Groq's vision model (`qwen/qwen3.8-27b`) because GPT-OSS is text-only
+
+Google Gemini and xAI Grok are still available in the provider dropdown if you prefer them.
 
 ### Accessibility Profiles
 Switch between preset profiles:
@@ -178,8 +180,8 @@ Switch between preset profiles:
 |---|---|
 | Speech recognition | Web Speech API (SpeechRecognition) |
 | Text-to-speech | Web Speech API (SpeechSynthesis) |
-| Image descriptions | Gemini 1.5 Flash / gemini-2.0-flash Vision API |
-| Text simplification | Gemini API + Chrome Built-in AI (Prompt API) + Heuristic engine |
+| Image descriptions | Groq vision (qwen/qwen3.8-27b), or Gemini Vision |
+| Text simplification | Groq GPT-OSS (openai/gpt-oss-20b), Gemini or Grok + Chrome Built-in AI (Prompt API) + Heuristic engine |
 | Gaze tracking | Browser Canvas + WebGL pixel analysis (privacy-first) |
 | Audio feedback | Web Audio API (no external files) |
 | Storage | chrome.storage.sync + local (cross-device sync) |
