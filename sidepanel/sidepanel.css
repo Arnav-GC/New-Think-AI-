@@ -1,23 +1,23 @@
 /* ==========================================================================
    OmniAccess AI — Side Panel Stylesheet
-   Dark theme, WCAG-AA compliant, 360px side panel width
+   Monochrome (black and white) theme, WCAG-AA compliant, 360px side panel width
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. CSS Custom Properties (Design Tokens)
    -------------------------------------------------------------------------- */
 :root {
-  --bg-primary:    #0f172a;
-  --bg-secondary:  #1e293b;
-  --bg-card:       #1e293b;
-  --accent:        #3b82f6;
-  --accent-hover:  #2563eb;
-  --text-primary:  #f8fafc;
-  --text-secondary:#94a3b8;
-  --border:        #334155;
-  --success:       #10b981;
-  --error:         #ef4444;
-  --warning:       #f59e0b;
+  --bg-primary:    #ffffff;
+  --bg-secondary:  #f5f5f5;
+  --bg-card:       #ffffff;
+  --accent:        #080808;
+  --accent-hover:  #292929;
+  --text-primary:  #080808;
+  --text-secondary:#555555;
+  --border:        #d4d4d4;
+  --success:       #047857;
+  --error:         #b91c1c;
+  --warning:       #b45309;
 
   /* toggle switch dimensions */
   --toggle-w: 44px;
@@ -110,7 +110,7 @@ body {
   align-items: center;
   gap: 12px;
   padding: 16px 16px 14px;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
 }
 
@@ -223,7 +223,7 @@ body {
 
 .tab-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .tab-btn.active,
@@ -345,7 +345,7 @@ body {
 .toggle-slider {
   position: absolute;
   inset: 0;
-  background: var(--border);
+  background: #8c8c8c;
   border-radius: 999px;
   transition: background 0.25s;
 }
@@ -468,7 +468,7 @@ body {
   background: var(--accent);
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s, background 0.2s;
 }
 
@@ -479,7 +479,7 @@ body {
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
 }
 
 .range-slider:hover::-webkit-slider-thumb {
@@ -493,7 +493,7 @@ body {
 }
 
 .range-slider:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.35);
 }
 
 /* --------------------------------------------------------------------------
@@ -608,7 +608,7 @@ button:focus-visible {
 }
 
 .btn-primary:active {
-  background: #1d4ed8;
+  background: #000000;
 }
 
 /* Secondary / Outline */
@@ -619,7 +619,7 @@ button:focus-visible {
 }
 
 .btn-secondary:hover {
-  background: rgba(59, 130, 246, 0.12);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 /* Danger */
@@ -630,8 +630,8 @@ button:focus-visible {
 }
 
 .btn-danger:hover {
-  background: #dc2626;
-  border-color: #dc2626;
+  background: #991b1b;
+  border-color: #991b1b;
 }
 
 /* Disabled state */
@@ -679,21 +679,21 @@ button:disabled {
 }
 
 .badge-success {
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(4, 120, 87, 0.1);
   color: var(--success);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(4, 120, 87, 0.35);
 }
 
 .badge-error {
-  background: rgba(239, 68, 68, 0.15);
+  background: rgba(185, 28, 28, 0.1);
   color: var(--error);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  border: 1px solid rgba(185, 28, 28, 0.35);
 }
 
 .badge-warning {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(180, 83, 9, 0.1);
   color: var(--warning);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  border: 1px solid rgba(180, 83, 9, 0.35);
 }
 
 /* --------------------------------------------------------------------------
@@ -714,7 +714,7 @@ button:disabled {
 }
 
 .results-pre {
-  background: #0a111f;
+  background: var(--bg-secondary);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 12px;
@@ -741,8 +741,8 @@ button:disabled {
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   font-size: 11px;
 }

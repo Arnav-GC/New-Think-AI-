@@ -265,9 +265,11 @@
         const label = filename || 'Image';
         img.setAttribute('aria-label', label);
         img.setAttribute('alt', label);
+        img.setAttribute('data-omni-auto-alt', ''); // placeholder alt; AI describer may replace it
       } catch (_) {
         img.setAttribute('alt', 'Image');
         img.setAttribute('aria-label', 'Image');
+        img.setAttribute('data-omni-auto-alt', '');
       }
     });
   }
@@ -1147,8 +1149,10 @@
             try {
               const filename = new URL(element.src).pathname.split('/').pop().replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
               element.setAttribute('alt', filename || 'Image');
+              element.setAttribute('data-omni-auto-alt', '');
             } catch (_) {
               element.setAttribute('alt', 'Image');
+              element.setAttribute('data-omni-auto-alt', '');
             }
             fixed++;
           }

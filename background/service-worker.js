@@ -17,7 +17,7 @@
    ───────────────────────────────────────────────────────────────────────────── */
 const DEFAULT_CONFIG = {
   // Profile management
-  activeProfile: 'default',
+  activeProfile: 'custom',
   profiles: {
     default: { label: 'Default', icon: '👤' },
     lowVision: { label: 'Low Vision', icon: '👁️' },

@@ -269,6 +269,9 @@
         if (h > 0 && h < 24) return false;
 
         // Process images with missing or empty alt, or images whose alt is just filename / unhelpful
+        // Alt text auto-generated from the filename is only a placeholder: describe it properly.
+        if (img.hasAttribute('data-omni-auto-alt')) return true;
+
         const alt = img.getAttribute('alt');
         return alt === null || alt.trim() === '' || looksLikeHash(alt.trim());
       });
@@ -282,6 +285,7 @@
           if (desc && desc.length > 3) {
             img.setAttribute('alt', desc);
             img.setAttribute('aria-label', desc);
+            img.removeAttribute('data-omni-auto-alt');
             this.described.add(img);
             this.injectDescriptionBadge(img, desc);
             describedCount++;
@@ -422,6 +426,7 @@
           if (desc && desc.length > 3) {
             img.setAttribute('alt', desc);
             img.setAttribute('aria-label', desc);
+            img.removeAttribute('data-omni-auto-alt');
             this.described.add(img);
             this.injectDescriptionBadge(img, desc);
             this.announce(desc);

@@ -349,9 +349,9 @@ async function loadAndPopulateSettings() {
   const initialMicLabel = document.getElementById("mic-status-label");
   if (initialMicDot && initialMicLabel) {
     if (s.voiceEnabled) {
-      initialMicLabel.innerHTML = `<span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span> <strong style="color: #34d399;">Mic Listening</strong>`;
+      initialMicLabel.innerHTML = `<span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #047857; box-shadow: 0 0 8px #047857;"></span> <strong style="color: #047857;">Mic Listening</strong>`;
     } else {
-      initialMicLabel.innerHTML = `<span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #64748b;"></span> Mic Idle / Off`;
+      initialMicLabel.innerHTML = `<span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #8c8c8c;"></span> Mic Idle / Off`;
     }
   }
   setCheckbox("gaze-toggle", s.gazeEnabled);
@@ -506,9 +506,9 @@ function bindInputTabControls() {
     if (voiceToggle) voiceToggle.checked = isListening;
     if (micStatusLabel && micStatusDot) {
       if (isListening) {
-        micStatusLabel.innerHTML = `<span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span> <strong style="color: #34d399;">Mic Listening</strong>`;
+        micStatusLabel.innerHTML = `<span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #047857; box-shadow: 0 0 8px #047857;"></span> <strong style="color: #047857;">Mic Listening</strong>`;
       } else {
-        micStatusLabel.innerHTML = `<span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #64748b;"></span> Mic Idle / Off`;
+        micStatusLabel.innerHTML = `<span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #8c8c8c;"></span> Mic Idle / Off`;
       }
     }
     if (micLiveText && text !== undefined) {

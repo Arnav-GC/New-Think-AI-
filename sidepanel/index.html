@@ -36,7 +36,7 @@
       <label id="profile-label" for="profile-select" class="profile-label">
         Accessibility Profile
       </label>
-      <button id="btn-reset-profile" type="button" class="btn btn-secondary" style="padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 6px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <button id="btn-reset-profile" type="button" class="btn btn-secondary" style="padding: 3px 8px; font-size: 11px; font-weight: 700; border-radius: 6px; background: rgba(185, 28, 28, 0.08); border: 1px solid rgba(185, 28, 28, 0.4); color: #b91c1c; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
         ✕ Turn Off Profile
       </button>
     </div>
@@ -122,53 +122,53 @@
             <button id="btn-start-mic" type="button" class="btn btn-primary" style="flex: 1; padding: 7px 12px; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: 6px; cursor: pointer;">
               🎙️ Start Mic
             </button>
-            <button id="btn-stop-mic" type="button" class="btn btn-secondary" style="flex: 1; padding: 7px 12px; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: 6px; cursor: pointer; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5;">
+            <button id="btn-stop-mic" type="button" class="btn btn-secondary" style="flex: 1; padding: 7px 12px; font-size: 13px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: 6px; cursor: pointer; background: rgba(185, 28, 28, 0.08); border: 1px solid rgba(185, 28, 28, 0.4); color: #b91c1c;">
               ⏹ Stop Mic
             </button>
           </div>
-          <div id="mic-live-banner" style="margin-top: 10px; padding: 8px 10px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; font-size: 12px; display: flex; align-items: center; justify-content: space-between;">
-            <span id="mic-status-label" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: #94a3b8;">
-              <span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #64748b;"></span>
+          <div id="mic-live-banner" style="margin-top: 10px; padding: 8px 10px; background: rgba(0, 0, 0, 0.04); border: 1px solid var(--border); border-radius: 6px; font-size: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span id="mic-status-label" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: #555555;">
+              <span id="mic-status-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #8c8c8c;"></span>
               Mic Idle / Off
             </span>
-            <span id="mic-live-text" style="color: #cbd5e1; font-style: italic; max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
+            <span id="mic-live-text" style="color: #333333; font-style: italic; max-width: 170px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></span>
           </div>
         </div>
 
         <!-- Voice Commands Cheat Sheet -->
-        <details style="margin-top: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 13px;">
-          <summary style="cursor: pointer; font-weight: 700; color: #60a5fa; user-select: none; display: flex; align-items: center; justify-content: space-between;">
+        <details style="margin-top: 14px; background: rgba(0, 0, 0, 0.03); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 13px;">
+          <summary style="cursor: pointer; font-weight: 700; color: #080808; user-select: none; display: flex; align-items: center; justify-content: space-between;">
             <span>📖 View All Voice Commands</span>
             <span style="font-size: 11px; opacity: 0.7;">▼</span>
           </summary>
-          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px; font-size: 12px; line-height: 1.5; color: #cbd5e1;">
+          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px; font-size: 12px; line-height: 1.5; color: #333333;">
             <div>
-              <strong style="color: #fff;">Media & Playback:</strong>
-              <div style="color: #94a3b8; margin-top: 2px;">• "play" / "play video" / "resume"</div>
-              <div style="color: #94a3b8;">• "pause" / "pause video" / "freeze"</div>
-              <div style="color: #94a3b8;">• "volume up" / "volume down" / "mute" / "unmute"</div>
+              <strong style="color: #080808;">Media & Playback:</strong>
+              <div style="color: #555555; margin-top: 2px;">• "play" / "play video" / "resume"</div>
+              <div style="color: #555555;">• "pause" / "pause video" / "freeze"</div>
+              <div style="color: #555555;">• "volume up" / "volume down" / "mute" / "unmute"</div>
             </div>
             <div>
-              <strong style="color: #fff;">Screen & Brightness:</strong>
-              <div style="color: #94a3b8; margin-top: 2px;">• "brightness up" / "make brighter"</div>
-              <div style="color: #94a3b8;">• "brightness down" / "dim screen"</div>
-              <div style="color: #94a3b8;">• "zoom in" / "zoom out" / "fullscreen"</div>
+              <strong style="color: #080808;">Screen & Brightness:</strong>
+              <div style="color: #555555; margin-top: 2px;">• "brightness up" / "make brighter"</div>
+              <div style="color: #555555;">• "brightness down" / "dim screen"</div>
+              <div style="color: #555555;">• "zoom in" / "zoom out" / "fullscreen"</div>
             </div>
             <div>
-              <strong style="color: #fff;">Navigation & Clicks:</strong>
-              <div style="color: #94a3b8; margin-top: 2px;">• "show numbers" (places badges on links/buttons)</div>
-              <div style="color: #94a3b8;">• "click [number or name]" (e.g. "click 3" or "click search")</div>
-              <div style="color: #94a3b8;">• "scroll down" / "scroll up" / "top" / "bottom"</div>
-              <div style="color: #94a3b8;">• "go back" / "go forward" / "reload"</div>
+              <strong style="color: #080808;">Navigation & Clicks:</strong>
+              <div style="color: #555555; margin-top: 2px;">• "show numbers" (places badges on links/buttons)</div>
+              <div style="color: #555555;">• "click [number or name]" (e.g. "click 3" or "click search")</div>
+              <div style="color: #555555;">• "scroll down" / "scroll up" / "top" / "bottom"</div>
+              <div style="color: #555555;">• "go back" / "go forward" / "reload"</div>
             </div>
             <div>
-              <strong style="color: #fff;">Microphone & AI:</strong>
-              <div style="color: #94a3b8; margin-top: 2px;">• "stop listening" / "turn off mic" / "mute mic"</div>
-              <div style="color: #94a3b8;">• "read page" / "stop reading"</div>
-              <div style="color: #94a3b8;">• "simplify text" / "high contrast" / "captions"</div>
+              <strong style="color: #080808;">Microphone & AI:</strong>
+              <div style="color: #555555; margin-top: 2px;">• "stop listening" / "turn off mic" / "mute mic"</div>
+              <div style="color: #555555;">• "read page" / "stop reading"</div>
+              <div style="color: #555555;">• "simplify text" / "high contrast" / "captions"</div>
             </div>
             <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); text-align: center;">
-              <a id="link-voice-commands" href="website.html#voice-commands" target="_blank" rel="noopener noreferrer" style="color: #60a5fa; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; font-size: 12px; cursor: pointer;">
+              <a id="link-voice-commands" href="website.html#voice-commands" target="_blank" rel="noopener noreferrer" style="color: #080808; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; font-size: 12px; cursor: pointer;">
                 <span>🌐 Open Full Voice Commands Guide in New Tab</span>
                 <span style="font-size: 14px;">↗</span>
               </a>
@@ -294,10 +294,10 @@
       hidden>
 
       <!-- Live Captions (Moved to top of Output tab for immediate visibility) -->
-      <section class="section-card" aria-labelledby="captions-heading" style="border: 1.5px solid #3b82f6;">
-        <h2 id="captions-heading" class="section-title" style="color: #60a5fa; display: flex; align-items: center; justify-content: space-between;">
+      <section class="section-card" aria-labelledby="captions-heading" style="border: 1.5px solid #080808;">
+        <h2 id="captions-heading" class="section-title" style="color: #080808; display: flex; align-items: center; justify-content: space-between;">
           <span>🎙️ Live Captions</span>
-          <span style="font-size: 11px; font-weight: normal; background: rgba(59,130,246,0.2); padding: 2px 8px; border-radius: 12px; color: #93c5fd;">Real-time</span>
+          <span style="font-size: 11px; font-weight: normal; background: #080808; padding: 2px 8px; border-radius: 12px; color: #ffffff;">Real-time</span>
         </h2>
 
         <div class="control-row">
@@ -443,7 +443,7 @@
           <button id="btn-start-read-aloud" class="btn-primary" type="button" style="flex: 1;">
             ▶ Read Page Aloud
           </button>
-          <button id="btn-stop-read-aloud" class="btn-secondary" type="button" style="flex: 1; color: #fca5a5; border-color: rgba(239,68,68,0.3);">
+          <button id="btn-stop-read-aloud" class="btn-secondary" type="button" style="flex: 1; color: #b91c1c; border-color: rgba(185,28,28,0.4);">
             ⏹ Stop Reading
           </button>
         </div>
@@ -737,7 +737,7 @@
               id="api-key-show-btn"
               aria-label="Show/hide API key"
               title="Show / hide key"
-              style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-secondary,#94a3b8);padding:4px;">
+              style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:16px;color:var(--text-secondary,#555555);padding:4px;">
               👁
             </button>
           </div>
@@ -746,7 +746,7 @@
           </p>
           <!-- Saved indicator -->
           <div id="key-saved-badge"
-               style="display:none; margin-top:6px; font-size:12px; color:#4ade80; display:flex; align-items:center; gap:5px;"
+               style="display:none; margin-top:6px; font-size:12px; color:#047857; display:flex; align-items:center; gap:5px;"
                aria-live="polite">
             <span>✓</span><span>Key remembered</span>
           </div>
@@ -759,7 +759,7 @@
           <button id="api-key-test-btn" class="btn-secondary" type="button">
             Test Key
           </button>
-          <button id="api-key-clear-btn" class="btn-secondary" type="button" style="color:#fca5a5; border-color:rgba(239,68,68,0.3);" title="Remove saved key">
+          <button id="api-key-clear-btn" class="btn-secondary" type="button" style="color:#b91c1c; border-color:rgba(185,28,28,0.4);" title="Remove saved key">
             Clear
           </button>
         </div>
@@ -815,7 +815,7 @@
         </div>
         <div id="images-status" class="status-message" aria-live="polite" role="status"></div>
         <div id="images-results-container" style="display: none; margin-top: 12px; background: rgba(15,23,42,0.6); border: 1px solid var(--border); border-radius: 8px; padding: 10px; max-height: 260px; overflow-y: auto;">
-          <div style="font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">Generated Image Descriptions:</div>
+          <div style="font-size: 11px; font-weight: 700; color: #555555; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.05em;">Generated Image Descriptions:</div>
           <div id="images-results-list" style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; line-height: 1.4;"></div>
         </div>
       </section>
